@@ -1,0 +1,500 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML FORM</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<style>
+    body {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+}
+.box {
+    width: 98%;
+    height: 50px;
+    padding: 14px;
+    font-size: 14px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+sup {
+    color: rgb(198, 49, 49);
+    font-size: 29px;
+   
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+}
+h3 {
+    text-align: center;
+    font-size: 26px;
+}
+
+label {
+    margin-top: 32px;
+}
+
+
+.a4-sheet {
+    width: 31cm;
+    height: 58cm;
+    background: white;
+    padding: 30px;
+    border: 2px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    
+}
+
+form  {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+.form-sections {
+    display: flex;
+    gap: 0px;
+    margin-bottom: 1px;
+}
+.form-half {
+      width: 130%;
+      border: 2px solid #000;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #fdfdfd;
+}
+.form-buttons {
+    text-align: center;
+    margin-top: -48px;
+}
+
+.form-buttons input[type="submit"],
+.form-buttons input[type="reset"] {
+    padding: 10px 25px;
+    font-size: 30px;
+    border-radius: 6px;
+    border: 2px solid #444;
+    background-color: #b5dff1fe;
+    cursor: pointer;
+    margin: 0 20px;
+    min-height: 50px;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select {
+    width: 1000px;
+    height: 80px;
+    padding: 10px;
+    border: 2px solid darkgray;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+input[type="number"]:hover,
+select:hover {
+    border: 3px solid rgb(9, 9, 9);
+}
+.form-row {
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.form-row label {
+  width: 60%;
+  
+}
+
+.form-row input,
+.form-row select {
+  width: 40%;
+  height: 40px;
+  padding: 10px;
+  border: 2px solid darkgray;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+    .form-row input:hover,
+    .form-row select:hover {
+      border: 3px solid #000;
+    }
+hr {
+      border: none;
+      border-top: 1px solid #aaa;
+      margin: 10px 0;
+    }
+h4 {
+    font-size: 25px;
+    display: block;
+    font-weight: lighter;
+}
+.custom-radio {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-left: 29px;
+}
+
+.custom-radio input[type="radio"] {
+  display: none; 
+}
+
+.radio-circle {
+  height: 20px;
+  width: 20px;
+  border: 2px solid #706969;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+}
+
+.custom-radio input[type="radio"]:checked + .radio-circle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 15px;
+  height: 15px;
+  background-color: #007bff;
+  border-radius: 50%;
+}
+
+
+</style>
+</head>
+<body>
+
+    <div class="a4-sheet">
+        <section id="header" style="display: flex; justify-content: space-between; align-items: center;">
+            <img src="{{ url_for('static', filename='image/logoleft.png') }}" class="logo" alt="" style="height: 134px;">
+            <div style="text-align: center; flex-grow: 1;">
+                <h1 style="margin: 0;">
+                    CSIR - National Physical Laboratory
+                </h1>
+                <h3 style="margin: 0;"> 
+                    सी एस आई आर - राष्ट्रीय भौतिक प्रयोगशाला
+                </h3>
+            </div>
+            <img src="{{ url_for('static', filename='image/logoright.svg.png') }}" class="logo" alt="" style="height: 117px;">
+    
+        </section>
+
+        <h4 style="color: rgb(193, 63, 63); margin-left: 22cm; margin-top: 0.4cm; margin-bottom: 0.0cm; font-size: 23px;">  *  Required feilds </h4>
+        <div class="form-sections">
+    <form action="{{ url_for('submit') }}" method="POST">
+
+        <div class="form-half" style="font-size: 24px;" >
+            <div class="form-row">
+                <label>1. Category:<sup> * </sup></label>
+                <select name="category">
+                    <option value="">Select</option>
+                    <option value="Individual">Individual</option>
+                    <option value="MSME">MSME</option>
+                    <option value="Government Organisation">Government Organisation</option>
+                    <option value="Start Up">Start Up</option>
+                    <option value="PSU">PSU</option>
+                </select>
+            </div>
+
+            
+
+            <div class="form-row">
+                <label>2. Name of the Organisation/Individual:<sup> * </sup> </label>
+                <input type="text" name="name" required />
+            </div>
+
+        
+
+            <div class="form-row">
+                <label>3. Total no. of employees: <sup> * </sup></label>
+                <input type="number" name="total_employees" required />
+            </div>
+
+        
+
+            <div class="form-row">
+            <label class="small-text">4. No. of employees interacting with NPL: <sup> * </sup></label>
+            <input type="number" name="employees_with_npl" required />
+            </div>
+
+        
+
+            <div class="form-row">
+            <label>5. Nationality:<sup> * </sup> </label>
+            <input type="text" name="nationality" required />
+            </div>
+
+            
+
+            <div class="form-row">
+            <label>6. E-mail ID: <sup> * </sup></label>
+            <input type="email" name="email" required />
+            </div>
+
+            
+
+            <div class="form-row">
+            <label>7. Phone Number: <sup> * </sup></label>
+            <input type="tel" name="phone" required />
+            </div>
+
+            
+
+            <div class="form-row">
+            <label>8. Sector of Organisation: <sup> * </sup></label>
+            <select name="sector">
+                <option value="">Select</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Automobile">Automobile</option>
+                <option value="Defence">Defence</option>
+                <option value="Accreditation Laboratory">Accreditation Laboratory</option>
+                <option value="Other">Other</option>
+            </select>
+            </div>
+      </div>
+    
+  </div>
+
+            <!--   STARTING THE TABLE SECTION.  -->
+
+            <h4> 9. Need of assessment for online portal: <sup> * </sup></h4>
+            <table cellpadding="10" border="1" style="width: 1064px; height: 470px; font-size: 23px;">
+                <thead>
+                    <tr>
+                        <td> Serial no. </td>
+                        <td> Parameters </td>
+                        <td> Not Necessary </td>
+                        <td> Currently not Necessary </td>
+                        <td> Necessary to consider  </td>
+                        <td> Necessary </td>
+                        <td> Extremely Necessary </td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td> I </td>
+                        <td> Facility to submit online requisition for calibration </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_submit" value="Not Necessary" required="*">
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_submit" value="Cuurently not Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_submit" value="Necessary to consider it" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_submit" value="Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_submit" value="Extremely Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td> II </td>
+                        <td>Facility to make online payments for the calibiration requests accepted by NPL </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_make" value="Not Necessary" required="*">
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_make" value="Cuurently not Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_make" value="Necessary to consider it" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_make" value="SNecessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_make" value="Extremely Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td> III </td>
+                        <td> Facility to monitor the status/progress of the accepted calibiration request </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_monitor" value="Not Necessary" required="*" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_monitor" value="Cuurently not Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_monitor" value="Necessary to consider it" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_monitor" value="Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_monitor" value="Extremely Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td> IV </td>
+                        <td> Electronic calibiration Certificate in Pdf format </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="electronic_calibration" value="Not Necessary" required="*">
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="electronic_calibration" value="Cuurently not Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="electronic_calibration" value="Necessary to consider it" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="electronic_calibration" value="Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="electronic_calibration" value="Extremely Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td> V </td>
+                        <td> Facility to check authencity of the Certificate issued by NPL </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_check" value="Not Necessary" required="*">
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_check" value="Cuurently not Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio" name="facility_to_check" value="Necessary to consider it" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_check" value="Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="custom-radio">
+                            <input type="radio" name="facility_to_check" value="Extremely Necessary" >
+                            <span class="radio-circle"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+
+            <br><br><br>
+
+            <label for="challenges" style="font-size: 24px;"> What are the challanges that you foresee if NPL provides an online 
+                portal for your calibiration requests like cost, man power, infrastructure, 
+                technical capibilities, etc :</label>
+                <br><br>
+            <input type="text" name="challanges" placeholder="Your suggestions">
+
+            <br><br>
+
+            <label for="any" style="font-size: 25px;"> Any other suggestions/comments :</label>
+
+            <br><br>
+
+            <input type="text" name="any" placeholder="Your suggestions">
+
+            <br><br><br><br><br><br>
+        <div class="form-buttons">
+            <input type="submit" name="submit" value="submit">
+            <input type="reset" name="reset" value="reset">
+        </div>
+    </form>
+    </div>
+</body>
+</html>
