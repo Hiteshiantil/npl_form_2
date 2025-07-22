@@ -66,7 +66,7 @@ def submit():
         email = request.form.get("email")
         phone = request.form.get("phone")
         sector = request.form.get("sector")
-        category = request.form.get("category")
+        sector = request.form.get("sector")
         if sector == "Other":
             other_sector = request.form.get("other_sector")
             if other_sector:
