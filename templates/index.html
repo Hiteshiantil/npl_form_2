@@ -340,61 +340,72 @@ h4 {
                     <input type="text" name="other_category" id="other_category" style="width: 200px;" >
                 </div>
             
-            
-
             <div class="form-row">
                 <label>2. Name of the Organisation/Individual:<sup> * </sup> </label>
                 <input type="text" name="name" required />
             </div>
-
-        
 
             <div class="form-row">
                 <label>3. Total no. of employees: <sup> * </sup></label>
                 <input type="number" name="total_employees" required />
             </div>
 
-        
-
             <div class="form-row">
             <label class="small-text">4. No. of employees interacting with NPL: <sup> * </sup></label>
             <input type="number" name="employees_with_npl" required />
             </div>
-
-        
 
             <div class="form-row">
             <label>5. Nationality:<sup> * </sup> </label>
             <input type="text" name="nationality" required />
             </div>
 
-            
-
             <div class="form-row">
             <label>6. E-mail ID: <sup> * </sup></label>
             <input type="email" name="email" required />
             </div>
-
-            
 
             <div class="form-row">
             <label>7. Phone Number: <sup> * </sup></label>
             <input type="tel" name="phone" required />
             </div>
 
-            
-
             <div class="form-row">
             <label>8. Sector of Organisation: <sup> * </sup></label>
-            <select name="sector">
+            <select name="sector" id="sector" required onchange="toggleOtherSectorofOrganisation(this)">
                 <option value="">Select</option>
-                <option value="Manufacturing">Manufacturing</option>
+                <option value="Accredation Laboratory">Accredation Laboratory</option>
                 <option value="Automobile">Automobile</option>
+                <option value="Aviation">Aviation</option>
+                <option value="Biomedical and Pharmaceutical">Biomedical and Pharmaceutical</option>
+                <option value="Dairy, Food & Beverages">Dairy, Food & Beverages</option>
                 <option value="Defence">Defence</option>
-                <option value="Accreditation Laboratory">Accreditation Laboratory</option>
-                <option value="Other">Other</option>
+                <option value="Electricals/Electronics">Electricals/Electronics</option>
+                <option value="Energy/Power">Energy/Power</option>
+                <option value="Enviroment/Meterology">Enviroment/Meterology</option>
+                <option value="Home Appliances">Home Appliances</option>
+                <option value="Housing/Infrastructure">Housing/Infrastructure</option>
+                <option value="Irrigation & Agriculture">Irrigation & Agriculture</option>
+                <option value="IT Consulatnacy and Banking">IT Consulatnacy and Banking</option>
+                <option value="Laboratory Equipment">Laboratory Equipment</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Petrochemicals/Chemcials">Petrochemicals/Chemcials</option>
+                <option value="Railways">Railways</option>
+                <option value="S&T and Academic">S&T and Academic</option>
+                <option value="SAARC Nations">SAARC Nations</option>
+                <option value="Space">Space</option>
+                <option value="Testing/ Accredation Lab">Testing/ Accredation Lab</option>
+                <option value="Textile">Textile</option>
+                <option value="Other">Any other</option>
+
+
             </select>
             </div>
+
+            <div class="form-row" id="other-sector-div" style="display:none;">
+                    <label for="other_sector" style="font-weight: normal;">Please specify:</label>
+                    <input type="text" name="other_sector" id="other_sector" style="width: 200px;" >
+                </div>
       </div>
     
   </div>
@@ -638,6 +649,19 @@ h4 {
             otherInput.value = '';
         }
     }
+
+    function toggleOtherSectorofOrganisation(selectElement) {
+        var otherSectorDiv = document.getElementById("other-sector-div");
+        var otherSectorInput = document.getElementById("other_sector");
+
+        if (selectElement.value === "Other") {
+            otherSectorDiv.style.display = "block";
+        } else {
+            otherSectorDiv.style.display = "none";
+            otherSectorInput.value = ""; // clear input
+        }
+    }
+
 </script>
 
 </body>
