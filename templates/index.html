@@ -322,19 +322,24 @@ h4 {
 
         <div class="form-half" style="font-size: 24px;" >
             <div class="form-row">
-                <label>1. Category:<sup> * </sup></label>
-                <select name="category">
+                <label for="category">1. Category:<sup> * </sup></label>
+                <select name="category" id="category" required onchange="toggleOtherCategory()">
                     <option value="">Select</option>
                     <option value="Individual">Individual</option>
                     <option value="MSME">MSME</option>
                     <option value="Government Organisation">Government Organisation</option>
                     <option value="Start Up">Start Up</option>
                     <option value="PSU">PSU</option>
-                     <option value="ANY">Any other </option>
+                    <option value="ANY">Any other </option>
 
                 </select>
             </div>
 
+                <div class="form-row" id="other-category-div" style="display:none; display: flex; align-items: center; gap: 5px;">
+                    <label for="other_category" style="font-weight: normal;">Please specify:</label>
+                    <input type="text" name="other_category" id="other_category" style="width: 150px;" >
+                </div>
+            
             
 
             <div class="form-row">
@@ -617,5 +622,23 @@ h4 {
         </div>
     </form>
     </div>
+
+    <script>
+    function toggleOtherCategory() {
+        const categorySelect = document.getElementById('category');
+        const otherDiv = document.getElementById('other-category-div');
+        const otherInput = document.getElementById('other_category');
+
+        if (categorySelect.value === 'ANY') {
+            otherDiv.style.display = 'block';
+            otherInput.required = true;
+        } else {
+            otherDiv.style.display = 'none';
+            otherInput.required = false;
+            otherInput.value = '';
+        }
+    }
+</script>
+
 </body>
 </html>
