@@ -210,6 +210,10 @@ h4 {
     width: 100%;
     text-align: right;
 }
+input[type="text"].box {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
 
 
 @media screen and (min-width: 768px) {
@@ -270,11 +274,14 @@ h4 {
         table {
             font-size: 14px;
         }
+        .form-buttons {
+            flex-direction: column;
+        }
 
         .form-buttons input,
         .form-buttons button {
             width: 100%;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .form-row label,
@@ -609,23 +616,23 @@ h4 {
             </table>
             </div> 
             
-            <br><br><br>
+            <br>
 
             <label for="challenges" style="font-size: 24px;"> What are the challanges that you foresee if NPL provides an online 
                 portal for your calibiration requests like cost, man power, infrastructure, 
                 technical capibilities, etc :</label>
-                <br><br>
-            <input type="text" name="challanges" placeholder="Your suggestions">
+                <br>
+            <input type="text" name="challanges" placeholder="Your suggestions" class="box" style="margin-bottom: 20px;">
 
-            <br><br>
+            
 
             <label for="any" style="font-size: 25px;"> Any other suggestions/comments :</label>
 
-            <br><br>
+            
 
-            <input type="text" name="any" placeholder="Your suggestions">
+            <input type="text" name="any" placeholder="Your suggestions" class="box" style="margin-bottom: 20px;">
 
-            <br><br><br><br><br><br>
+            
         <div class="form-buttons">
             <input type="submit" name="submit" value="submit">
             <input type="reset" name="reset" value="reset">
