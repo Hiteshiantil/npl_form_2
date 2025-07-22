@@ -66,11 +66,10 @@ def submit():
         email = request.form.get("email")
         phone = request.form.get("phone")
         sector = request.form.get("sector")
-        sector = request.form.get("sector")
         if sector == "Other":
             other_sector = request.form.get("other_sector")
             if other_sector:
-                category = other_sector
+                sector = other_sector
 
         facility_to_submit= request.form.get("facility_to_submit")
         facility_to_make= request.form.get("facility_to_make")
