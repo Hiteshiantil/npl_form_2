@@ -54,6 +54,11 @@ def save_db(category, name, total_employees, employees_with_npl, nationality,
 def submit():
     try:
         category = request.form.get("category")
+        if category == "ANY":
+            other_category = request.form.get("other_category")
+            if other_category:
+                category = other_category
+
         name = request.form.get("name")
         total_employees = int(request.form.get("total_employees"))
         employees_with_npl = int(request.form.get("employees_with_npl"))
