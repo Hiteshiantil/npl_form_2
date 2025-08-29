@@ -8,8 +8,8 @@ def save_db(category, name, total_employees, employees_with_npl, nationality,
             email, phone, sector, facility_to_submit, facility_to_make,
             facility_to_monitor, electronic_calibration, facility_to_check, challenges, comments):
     print("Saving to DB:", category, name, total_employees, employees_with_npl, nationality,
-          email, phone, sector, facility_to_submit, facility_to_make,
-          facility_to_monitor, electronic_calibration, facility_to_check, challenges, comments)
+        email, phone, sector, facility_to_submit, facility_to_make,
+        facility_to_monitor, electronic_calibration, facility_to_check, challenges, comments)
 
     try:
         # Connect to your local PostgreSQL database
