@@ -75,7 +75,7 @@ def submit():
         facility_to_monitor = request.form.get("facility_to_monitor")
         electronic_calibration = request.form.get("electronic_calibration")
         facility_to_check = request.form.get("facility_to_check")
-        challenges = request.form.get("challanges")   # check spelling in form
+        challenges = request.form.get("challanges")   
         comments = request.form.get("any")
 
         # Save into DB
@@ -95,6 +95,8 @@ def submit():
 def index():
     return render_template('index.html')
 
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=5000)
 
 if __name__ == '__main__':
     app.run(debug=True)
