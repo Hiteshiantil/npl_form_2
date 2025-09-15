@@ -1,8 +1,10 @@
+
 from flask import Flask, render_template, request
 import psycopg2
 from datetime import datetime
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 def save_db(category, name, total_employees, employees_with_npl, nationality,
             email, phone, sector, facility_to_submit, facility_to_make,
@@ -12,11 +14,11 @@ def save_db(category, name, total_employees, employees_with_npl, nationality,
         facility_to_monitor, electronic_calibration, facility_to_check, challenges, comments)
 
     try:
-        # Connect to your local PostgreSQL database
+        # Connect to PostgreSQL database
         conn = psycopg2.connect(
             dbname="hiteshi_db",
             user="postgres",
-            password="8383",   # put your password
+            password="8383",
             host="localhost",
             port="5432"
         )
@@ -75,7 +77,7 @@ def submit():
         facility_to_monitor = request.form.get("facility_to_monitor")
         electronic_calibration = request.form.get("electronic_calibration")
         facility_to_check = request.form.get("facility_to_check")
-        challenges = request.form.get("challanges")   
+        challenges = request.form.get("challanges")   # note spelling in form
         comments = request.form.get("any")
 
         # Save into DB
@@ -95,8 +97,11 @@ def submit():
 def index():
     return render_template('index.html')
 
-# if __name__ == "__main__":
-#     app.run(host="0.0.0.0", port=5000)
 
-if __name__ == '__main__':
+# Mount app under /cfcsir so routes become /cfcsir/, /cfcsir/submit etc.
+application = DispatcherMiddleware(Flask('dummy_root'), {
+    '/cfcsir': app
+})
+
+if _name_ == '_main_':
     app.run(debug=True)
