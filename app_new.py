@@ -4,7 +4,7 @@ import psycopg2
 from datetime import datetime
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 def save_db(category, name, total_employees, employees_with_npl, nationality,
             email, phone, sector, facility_to_submit, facility_to_make,
@@ -103,5 +103,5 @@ application = DispatcherMiddleware(Flask('dummy_root'), {
     '/cfcsir': app
 })
 
-if _name_ == '_main_':
+if __name__ == '_main_':
     app.run(debug=True)
